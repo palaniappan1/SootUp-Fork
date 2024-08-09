@@ -60,9 +60,6 @@ jobs:
           java-package: 'jdk'
           java-version: '8'
 
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
       - name: Install Maven
         run: |
           sudo apt-get update
