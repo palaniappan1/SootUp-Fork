@@ -9,7 +9,7 @@ BASE_URL = "https://search.maven.org/solrsearch/select"
 DOWNLOAD_URL_TEMPLATE = "https://repo1.maven.org/maven2/{group}/{artifact}/{version}/{artifact}-{version}.jar"
 metadata_path = os.getenv('METADATA_PATH', 'metadata.json')
 OUTPUT_DIR = "downloaded_jars"
-NUM_JARS = 100
+NUM_JARS = 5
 MAX_SIZE_MB = 5 * 1024 * 1024  # 5MB in bytes
 
 # Ensure output directory exists
@@ -60,7 +60,12 @@ def get_metadata():
             return json.load(file)
     elif os.path.isdir(metadata_path):
         raise IsADirectoryError(f"{metadata_path} is a directory, not a file.")
-    return {"jars": []}
+    else:
+        os.makedirs(os.path.dirname(metadata_path), exist_ok=True)
+        # Create the file with an empty array
+        with open(metadata_path, 'w') as file:
+            json.dump({"jars": []}, file, indent=4)
+        return {"jars": []}
 
 
 def save_metadata(data):

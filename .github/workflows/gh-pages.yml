@@ -5,14 +5,16 @@
 name: Documentation
 
 on:
-  push:
-    branches:
-      - develop
-    paths:
-      - 'mkdocs.yml'
-      - 'sootup.examples/**'
-      - 'docs/**'
-      - '.github/workflows/gh-pages.yml'
+#  push:
+#    branches:
+#      - develop
+#    paths:
+#      - 'mkdocs.yml'
+#      - 'sootup.examples/**'
+#      - 'docs/**'
+#      - '.github/workflows/gh-pages.yml'
+  workflow_dispatch:
+
 
   release:
     types: [ created, published ]
