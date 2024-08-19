@@ -1,0 +1,19 @@
+{
+    "jars": [
+        {
+            "name": "org.eclipse.emf.gwt.ecore.edit--2.9.0.jar"
+        },
+        {
+            "name": "patterns--1.0.2.jar"
+        },
+        {
+            "name": "hibernate-tools-orm-jbt--7.0.0.Beta1.jar"
+        },
+        {
+            "name": "trixnity-utils--4.6.1.jar"
+        },
+        {
+            "name": "mybatis-mapper-spring-boot-autoconfigure--1.3.1.jar"
+        }
+    ]
+}

@@ -47,18 +47,19 @@ public class RandomJarTest {
         exception = e.getMessage();
         isTestFailure = true;
       } finally {
-        if(!isTestFailure) {
+        if (!isTestFailure) {
           writeTestMetrics(
-                  new TestMetrics(
-                          jarPath.substring(jarPath.lastIndexOf("/") + 1),
-                          number_of_classes,
-                          number_of_methods,
-                          time_taken_for_classes,
-                          time_taken_for_methods,
-                          exception));
-        }
-        else{
-          writeFailureMetrics(new TestMetrics(jarPath.substring(jarPath.lastIndexOf("/") + 1), -1, -1, -1, -1, exception));
+              new TestMetrics(
+                  jarPath.substring(jarPath.lastIndexOf("/") + 1),
+                  number_of_classes,
+                  number_of_methods,
+                  time_taken_for_classes,
+                  time_taken_for_methods,
+                  exception));
+        } else {
+          writeFailureMetrics(
+              new TestMetrics(
+                  jarPath.substring(jarPath.lastIndexOf("/") + 1), -1, -1, -1, -1, exception));
         }
       }
     } catch (Exception e) {
@@ -106,29 +107,24 @@ public class RandomJarTest {
     }
   }
 
-  public void writeFailureMetrics(TestMetrics testMetrics){
+  public void writeFailureMetrics(TestMetrics testMetrics) {
     String file_name = "jar_failure.csv";
     File file = new File(file_name);
     boolean fileExists = file.exists();
     try (FileWriter fw = new FileWriter(file, true); // Append mode
-         PrintWriter writer = new PrintWriter(fw)) {
+        PrintWriter writer = new PrintWriter(fw)) {
 
       // Write the header if the file doesn't exist
       if (!fileExists) {
-        writer.println(
-                "jar_name,exception");
+        writer.println("jar_name,exception");
       }
 
       // Write each metric to the file
-      writer.println(
-              testMetrics.getJar_name()
-                      + ","
-                      + testMetrics.getException());
+      writer.println(testMetrics.getJar_name() + "," + testMetrics.getException());
 
     } catch (IOException e) {
       e.printStackTrace();
     }
-
   }
 
   private Collection<JavaSootClass> getClasses(JavaView view) {
