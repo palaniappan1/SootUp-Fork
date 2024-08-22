@@ -1,0 +1,19 @@
+{
+    "jars": [
+        {
+            "name": "catalysts-speclite_sjs0.6_2.13.0-M5--0.8.jar"
+        },
+        {
+            "name": "tolr--0.7.2.jar"
+        },
+        {
+            "name": "region-adapter-spring-cloud-config-starter--1.0.0.jar"
+        },
+        {
+            "name": "nuiton-js-wro--1.0.3.jar"
+        },
+        {
+            "name": "scalardb-analytics-spark-compat-3.4_2.12--3.12.0.jar"
+        }
+    ]
+}

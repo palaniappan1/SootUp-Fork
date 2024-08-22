@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import sootup.core.inputlocation.AnalysisInputLocation;
@@ -49,15 +48,15 @@ public class RandomJarTest {
     } finally {
       String jarFileName = jarPath.substring(jarPath.lastIndexOf("/") + 1);
       TestMetrics metrics =
-              new TestMetrics(
-                      jarFileName,
-                      numberOfClasses,
-                      numberOfMethods,
-                      timeTakenForClasses,
-                      timeTakenForMethods,
-                      exception);
+          new TestMetrics(
+              jarFileName,
+              numberOfClasses,
+              numberOfMethods,
+              timeTakenForClasses,
+              timeTakenForMethods,
+              exception);
       writeMetrics(
-              metrics, isTestFailure ? FAILURE_METRICS_FILE : TEST_METRICS_FILE, isTestFailure);
+          metrics, isTestFailure ? FAILURE_METRICS_FILE : TEST_METRICS_FILE, isTestFailure);
     }
   }
 
@@ -66,31 +65,37 @@ public class RandomJarTest {
     boolean fileExists = file.exists();
 
     try (FileWriter fw = new FileWriter(file, true);
-         PrintWriter writer = new PrintWriter(fw)) {
+        PrintWriter writer = new PrintWriter(fw)) {
       if (!fileExists) {
         writer.println(
-                isFailure
-                        ? "jar_name,exception,failedMethodSignature"
-                        : "jar_name,number_of_classes,number_of_methods,time_taken_for_classes,time_taken_for_methods,exception");
+            isFailure
+                ? "jar_name,exception,failedMethodSignature"
+                : "jar_name,number_of_classes,number_of_methods,time_taken_for_classes,time_taken_for_methods,exception");
       }
 
       if (isFailure) {
-        // As the parameters in the method signature have delimiter (,), writer thinks that as a two different values, so wrapping in an escape sequence.
+        // As the parameters in the method signature have delimiter (,), writer thinks that as a two
+        // different values, so wrapping in an escape sequence.
         String escapedFailedMethodSignature = "\"" + failedMethodSignature + "\"";
-        writer.println(testMetrics.getJar_name() + "," + testMetrics.getException() + "," + escapedFailedMethodSignature);
+        writer.println(
+            testMetrics.getJar_name()
+                + ","
+                + testMetrics.getException()
+                + ","
+                + escapedFailedMethodSignature);
       } else {
         writer.println(
-                testMetrics.getJar_name()
-                        + ","
-                        + testMetrics.getNumberOfClasses()
-                        + ","
-                        + testMetrics.getNumber_of_methods()
-                        + ","
-                        + testMetrics.getTime_taken_for_classes()
-                        + ","
-                        + testMetrics.getTime_taken_for_classes()
-                        + ","
-                        + testMetrics.getException());
+            testMetrics.getJar_name()
+                + ","
+                + testMetrics.getNumberOfClasses()
+                + ","
+                + testMetrics.getNumber_of_methods()
+                + ","
+                + testMetrics.getTime_taken_for_classes()
+                + ","
+                + testMetrics.getTime_taken_for_classes()
+                + ","
+                + testMetrics.getException());
       }
     } catch (IOException e) {
       e.printStackTrace();
@@ -108,21 +113,21 @@ public class RandomJarTest {
   private long getMethods(Collection<JavaSootClass> classes) {
     try {
       return classes.stream()
-              .mapToLong(
-                      clazz ->
-                              clazz.getMethods().stream()
-                                      .peek(
-                                              method -> {
-                                                try {
-                                                  method.getBody();
-                                                  throw new RuntimeException();
-                                                } catch (Exception e) {
-                                                  failedMethodSignature = String.valueOf(method.getSignature());
-                                                  throw new RuntimeException(e);
-                                                }
-                                              })
-                                      .count())
-              .sum();
+          .mapToLong(
+              clazz ->
+                  clazz.getMethods().stream()
+                      .peek(
+                          method -> {
+                            try {
+                              method.getBody();
+                              throw new RuntimeException();
+                            } catch (Exception e) {
+                              failedMethodSignature = String.valueOf(method.getSignature());
+                              throw new RuntimeException(e);
+                            }
+                          })
+                      .count())
+          .sum();
     } catch (RuntimeException e) {
       throw e;
     } catch (Exception e) {
@@ -139,12 +144,12 @@ public class RandomJarTest {
     String exception;
 
     public TestMetrics(
-            String jar_name,
-            long number_of_classes,
-            long number_of_methods,
-            long time_taken_for_classes,
-            long time_taken_for_methods,
-            String exception) {
+        String jar_name,
+        long number_of_classes,
+        long number_of_methods,
+        long time_taken_for_classes,
+        long time_taken_for_methods,
+        String exception) {
       this.jar_name = jar_name;
       this.number_of_classes = number_of_classes;
       this.number_of_methods = number_of_methods;
