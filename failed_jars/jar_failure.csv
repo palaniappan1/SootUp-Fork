@@ -1,6 +1,0 @@
-jar_name,exception,failedMethodSignature
-catalysts-speclite_sjs0.6_2.13.0-M5-0.8.jar,java.lang.RuntimeException,"<catalysts.speclite.PropFromFun: catalysts.speclite.Prop$Result apply(catalysts.speclite.Gen$Parameters)>"
-nuiton-js-wro-1.0.3.jar,java.lang.RuntimeException,"<org.nuiton.js.wro.ProtectedXmlModelFactory: java.lang.String getDefaultModelFilename()>"
-region-adapter-spring-cloud-config-starter-1.0.0.jar,java.lang.RuntimeException,"<com.region.spring.cloud.RegionConfigRefresher: void <clinit>()>"
-scalardb-analytics-spark-compat-3.4_2.12-3.12.0.jar,java.lang.RuntimeException,"<com.scalar.db.analytics.spark.util.QuotingUtil$: void <init>()>"
-tolr-0.7.2.jar,java.lang.RuntimeException,"<se.wollan.tolr.ServerServerAPIImpl$replicateLog$1: void <init>(se.wollan.tolr.ServerServerAPIImpl,kotlin.coroutines.Continuation)>"
