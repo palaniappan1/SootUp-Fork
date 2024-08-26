@@ -14,6 +14,21 @@
         },
         {
             "name": "scalardb-analytics-spark-compat-3.4_2.12--3.12.0.jar"
+        },
+        {
+            "name": "mysema-commons-core--0.3.8.jar"
+        },
+        {
+            "name": "discipline-core_0.27--1.1.2.jar"
+        },
+        {
+            "name": "hadoop-aliyun--2.7.2.jar"
+        },
+        {
+            "name": "sigval-pdf--1.0.1.jar"
+        },
+        {
+            "name": "oceanengine-spring-boot-starter--1.0.0-beta.3.jar"
         }
     ]
 }

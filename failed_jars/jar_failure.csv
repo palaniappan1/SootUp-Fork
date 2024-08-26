@@ -1,0 +1,6 @@
+jar_name,exception,failedMethodSignature
+discipline-core_0.27-1.1.2.jar,sootup.core.frontend.ResolveException: There is no corresponding body if the method is not concrete i.e.<org.typelevel.discipline.Laws$RuleSet: org.typelevel.discipline.Laws org$typelevel$discipline$Laws$RuleSet$$$outer()> is abstract or native. file://home/runner/work/SootUp-Fork/SootUp-Fork/sootup.java.bytecode NoPositionInformation,"<org.typelevel.discipline.Laws$RuleSet: org.typelevel.discipline.Laws org$typelevel$discipline$Laws$RuleSet$$$outer()>"
+hadoop-aliyun-2.7.2.jar,java.lang.RuntimeException,"<com.aliyun.oss.model.PartSummary: java.lang.String getETag()>"
+mysema-commons-core-0.3.8.jar,java.lang.RuntimeException,"<com.mysema.commons.core.ReflectionUtils: void <init>()>"
+oceanengine-spring-boot-starter-1.0.0-beta.3.jar,java.lang.RuntimeException,"<com.hyq0719.spring.starter.mktapi.oceanengine.config.HttpAutoConfiguration: com.hyq0719.mktapi.common.executor.http.OkhttpHttpHandler okhttpRequestHandler(okhttp3.OkHttpClient)>"
+sigval-pdf-1.0.1.jar,java.lang.RuntimeException,"<se.idsec.sigval.pdf.pdfstruct.AcroForm: se.idsec.sigval.pdf.pdfstruct.Dictionary getDictionary()>"
