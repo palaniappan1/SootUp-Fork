@@ -111,7 +111,7 @@ public class RandomJarTest {
 
   private Collection<JavaSootClass> getClasses(JavaView view) {
     try {
-      return view.getClasses();
+      return view.getClasses().collect(Collectors.toList());
     } catch (Exception e) {
       throw new RuntimeException("Error while getting class list", e);
     }

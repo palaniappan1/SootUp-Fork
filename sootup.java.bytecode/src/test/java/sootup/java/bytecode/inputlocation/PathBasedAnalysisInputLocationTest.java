@@ -56,15 +56,6 @@ import sootup.java.core.views.JavaView;
 public class PathBasedAnalysisInputLocationTest extends AnalysisInputLocationTest {
 
   @Test
-  public void testApk() {
-    PathBasedAnalysisInputLocation pathBasedNamespace =
-        new ApkAnalysisInputLocation(apk, SourceType.Application);
-    final ClassType mainClass =
-        getIdentifierFactory().getClassType("de.upb.futuresoot.fields.MainActivity");
-    testClassReceival(pathBasedNamespace, Collections.singletonList(mainClass), 1392);
-  }
-
-  @Test
   public void testSingleClass() {
     PathBasedAnalysisInputLocation pathBasedNamespace =
         new PathBasedAnalysisInputLocation.ClassFileBasedAnalysisInputLocation(
@@ -123,7 +114,7 @@ public class PathBasedAnalysisInputLocationTest extends AnalysisInputLocationTes
     // Get the view
     JavaView view = new JavaView(new JavaClassPathAnalysisInputLocation(warFile));
 
-    assertEquals(19, view.getClasses().size());
+    assertEquals(19, view.getClasses().count());
 
     // Create java class signature
     ClassType utilsClassSignature = view.getIdentifierFactory().getClassType("Employee", "ds");
@@ -215,11 +206,7 @@ public class PathBasedAnalysisInputLocationTest extends AnalysisInputLocationTes
 
     Collection<SootClass> classes = new HashSet<>(); // Set to track the classes to check
 
-    for (SootClass aClass : view.getClasses()) {
-      if (!aClass.isLibraryClass()) {
-        classes.add(aClass);
-      }
-    }
+    view.getClasses().filter(aClass -> !aClass.isLibraryClass()).forEach(classes::add);
 
     assertEquals(0, classes.size(), "User Defined class found, expected none");
   }

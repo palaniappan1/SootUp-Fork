@@ -70,10 +70,12 @@ public final class PTAUtils {
     return JavaIdentifierFactory.getInstance().getClassType(fullyQualifiedClassName);
   }
 
+  // TODO: use isStaticInitializer from the IdentifierFactory
   public static boolean isStaticInitializer(SootMethod method) {
     return method.getName().equals("<clinit>");
   }
 
+  // TODO: use isConstructor from the IdentifierFactory
   public static boolean isConstructor(SootMethod method) {
     return method.getName().equals("<init>");
   }
@@ -296,8 +298,7 @@ public final class PTAUtils {
 
   public static String findMainFromMetaInfo(String appPath) {
     String mainClass = null;
-    try {
-      JarFile jar = new JarFile(appPath);
+    try (JarFile jar = new JarFile(appPath)) {
       Enumeration<JarEntry> allEntries = jar.entries();
       while (allEntries.hasMoreElements()) {
         JarEntry entry = allEntries.nextElement();
