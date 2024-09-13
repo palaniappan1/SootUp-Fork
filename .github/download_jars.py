@@ -9,7 +9,7 @@ BASE_URL = "https://search.maven.org/solrsearch/select"
 DOWNLOAD_URL_TEMPLATE = "https://repo1.maven.org/maven2/{group}/{artifact}/{version}/{artifact}-{version}.jar"
 metadata_path = os.getenv('METADATA_PATH', 'metadata.json')
 OUTPUT_DIR = "downloaded_jars"
-NUM_JARS = 5
+NUM_JARS = 2
 MAX_SIZE_MB = 5 * 1024 * 1024  # 5MB in bytes
 
 # Ensure output directory exists
@@ -89,7 +89,8 @@ while downloaded_count < NUM_JARS:
         if not any(jar['name'] == artifact_name for jar in metadata['jars']):
             if download_file(download_url, output_path):
                 metadata['jars'].append({
-                    'name': artifact_name
+                    'name': artifact_name,
+                    'download_url': download_url
                 })
                 save_metadata(metadata)
                 print(f"Downloaded: {output_path}")

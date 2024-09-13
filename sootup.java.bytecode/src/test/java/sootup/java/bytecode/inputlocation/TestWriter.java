@@ -6,45 +6,52 @@ import java.util.List;
 
 public class TestWriter {
 
-    String templateStart = "package sootup.java.bytecode.inputlocation;\n" +
-            "\n" +
-            "import categories.TestCategories;\n" +
-            "import org.junit.jupiter.api.Tag;\n" +
-            "import org.junit.jupiter.api.Test;\n" +
-            "import sootup.java.core.views.JavaView;\n" +
-            "\n" +
-            "@Tag(TestCategories.JAVA_8_CATEGORY)\n" +
-            "public class FixJars extends BaseFixJarsTest {\n\n";
+    String templateStart =
+            "package sootup.java.bytecode.inputlocation;\n"
+                    + "\n"
+                    + "import categories.TestCategories;\n"
+                    + "import org.junit.jupiter.api.Tag;\n"
+                    + "import org.junit.jupiter.api.Test;\n"
+                    + "import sootup.java.core.views.JavaView;\n"
+                    + "\n"
+                    + "@Tag(TestCategories.JAVA_8_CATEGORY)\n"
+                    + "public class FixJars extends BaseFixJarsTest {\n\n";
 
     String TEST_TAG = "@Test\n";
 
-    public  String getMethodString(String jarName, String methodSignature){
-        String methodName = "public void execute" + jarName.replace(".jar", "").replaceAll("[^a-zA-Z]", "") + "(){\n";
-        return TEST_TAG + methodName +  "\tString jarName = \"" + jarName + "\";\n" +
-                "    String methodSignature = \"" + methodSignature + "\";\n" +
-                "    JavaView javaView = supplyJavaView(jarName);\n" +
-                "    assertMethodConversion(javaView,methodSignature);\n" +
-                "    assertJar(javaView);\n" + "}\n\n";
+    public String getMethodString(String jarDownloadUrl, String methodSignature) {
+        String methodName =
+                "public void execute" + jarDownloadUrl.replace(".jar", "").replaceAll("[^a-zA-Z]", "") + "(){\n";
+        return TEST_TAG
+                + methodName
+                + "\tString jarDownloadUrl = \""
+                + jarDownloadUrl
+                + "\";\n"
+                + "    String methodSignature = \""
+                + methodSignature
+                + "\";\n"
+                + "    JavaView javaView = supplyJavaView(jarDownloadUrl);\n"
+                + "    assertMethodConversion(javaView,methodSignature);\n"
+                + "    assertJar(javaView);\n"
+                + "}\n\n";
     }
 
     String templateEnd = "}";
 
-
-
-    public String getTestContent(){
+    public String getTestContent() {
         StringBuilder content = new StringBuilder(templateStart);
         for (JarFailureRecord record : getRecords()) {
-            content.append(getMethodString(record.jarName, record.failedMethodSignature));
+            content.append(getMethodString(record.download_url, record.failedMethodSignature));
         }
         content.append(templateEnd);
         return content.toString();
     }
 
-    public void writeTestFile(){
+    public void writeTestFile() {
         String folderPath = "src/test/java/sootup/java/bytecode/inputlocation";
         String filePath = folderPath + "/" + "FixJars.java";
         String content = getTestContent();
-        if(content.isEmpty()){
+        if (content.isEmpty()) {
             return;
         }
         System.out.println(content);
@@ -57,7 +64,6 @@ public class TestWriter {
     }
 
     String failedJarsInfo = "jar_failure.csv";
-
 
     public List<JarFailureRecord> getRecords() {
         List<JarFailureRecord> records = new ArrayList<>();
@@ -80,7 +86,7 @@ public class TestWriter {
                 }
 
                 // Create a JarFailureRecord object from the line
-                JarFailureRecord record = new JarFailureRecord(values[0], values[2]);
+                JarFailureRecord record = new JarFailureRecord(values[0], values[2], values[3]);
                 records.add(record);
             }
         } catch (IOException e) {
@@ -92,18 +98,13 @@ public class TestWriter {
     public static class JarFailureRecord {
         private final String jarName;
         private final String failedMethodSignature;
+        private final String download_url;
 
-        public JarFailureRecord(String jarName, String failedMethodSignature) {
+        public JarFailureRecord(String jarName, String failedMethodSignature, String download_url) {
             this.jarName = jarName;
             this.failedMethodSignature = failedMethodSignature;
+            this.download_url = download_url;
         }
 
-        public String getJarName() {
-            return jarName;
-        }
-
-        public String getFailedMethodSignature() {
-            return failedMethodSignature;
-        }
     }
 }

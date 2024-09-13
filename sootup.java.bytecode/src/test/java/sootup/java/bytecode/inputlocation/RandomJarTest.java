@@ -1,12 +1,15 @@
 package sootup.java.bytecode.inputlocation;
 
 import categories.TestCategories;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+
+import java.io.*;
 import java.util.Collection;
 import java.util.stream.Collectors;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import sootup.core.inputlocation.AnalysisInputLocation;
@@ -22,6 +25,7 @@ public class RandomJarTest {
   private boolean isTestFailure = false;
   private String exception = "No Exceptions :)";
   private String failedMethodSignature = "";
+  String metadataFilepath = "metadata/metadata.json";
 
   @Test
   public void testJar() {
@@ -51,6 +55,7 @@ public class RandomJarTest {
       TestMetrics metrics =
               new TestMetrics(
                       jarFileName,
+                      getDownloadUrl(jarFileName),
                       numberOfClasses,
                       numberOfMethods,
                       timeTakenForClasses,
@@ -62,7 +67,7 @@ public class RandomJarTest {
   }
 
   @Test
-  public void writeFile(){
+  public void writeFile() {
     System.out.println("This Test is written");
     new TestWriter().writeTestFile();
   }
@@ -76,8 +81,8 @@ public class RandomJarTest {
       if (!fileExists) {
         writer.println(
                 isFailure
-                        ? "jar_name,exception,failedMethodSignature"
-                        : "jar_name,number_of_classes,number_of_methods,time_taken_for_classes,time_taken_for_methods,exception");
+                        ? "jar_name,exception,failedMethodSignature,download_url"
+                        : "jar_name,number_of_classes,number_of_methods,time_taken_for_classes,time_taken_for_methods,exception,download_url");
       }
 
       if (isFailure) {
@@ -89,7 +94,8 @@ public class RandomJarTest {
                         + ","
                         + testMetrics.getException()
                         + ","
-                        + escapedFailedMethodSignature);
+                        + escapedFailedMethodSignature
+                        + "," + testMetrics.getDownload_url());
       } else {
         writer.println(
                 testMetrics.getJar_name()
@@ -102,7 +108,7 @@ public class RandomJarTest {
                         + ","
                         + testMetrics.getTimeTakenForMethods()
                         + ","
-                        + testMetrics.getException());
+                        + testMetrics.getException() + "," + testMetrics.getDownload_url());
       }
     } catch (IOException e) {
       e.printStackTrace();
@@ -142,6 +148,25 @@ public class RandomJarTest {
     }
   }
 
+  public String getDownloadUrl(String artifactId){
+    Gson gson = new Gson();
+
+    try (FileReader reader = new FileReader(metadataFilepath)) {
+      JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
+      JsonArray artifactsArray = jsonObject.getAsJsonArray("artifacts");
+
+      for (JsonElement element : artifactsArray) {
+        JsonObject artifact = element.getAsJsonObject();
+        if (artifactId.equals(artifact.get("artifactId").getAsString())) {
+          return artifact.get("download_url").getAsString();
+        }
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
   public static class TestMetrics {
     String jar_name;
     long numberOfClasses;
@@ -149,20 +174,27 @@ public class RandomJarTest {
     long timeTakenForClasses;
     long timeTakenForMethods;
     String exception;
+    String download_url;
 
     public TestMetrics(
             String jar_name,
+            String download_url,
             long number_of_classes,
             long number_of_methods,
             long time_taken_for_classes,
             long time_taken_for_methods,
             String exception) {
       this.jar_name = jar_name;
+      this.download_url = download_url;
       this.numberOfClasses = number_of_classes;
       this.numberOfMethods = number_of_methods;
       this.timeTakenForClasses = time_taken_for_classes;
       this.timeTakenForMethods = time_taken_for_methods;
       this.exception = exception;
+    }
+
+    public String getDownload_url() {
+      return download_url;
     }
 
     String getJar_name() {
