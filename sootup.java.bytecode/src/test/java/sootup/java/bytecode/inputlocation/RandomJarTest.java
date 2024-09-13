@@ -157,7 +157,7 @@ public class RandomJarTest {
 
       for (JsonElement element : artifactsArray) {
         JsonObject artifact = element.getAsJsonObject();
-        if (artifactId.equals(artifact.get("artifactId").getAsString())) {
+        if (artifactId.equals(artifact.get("name").getAsString())) {
           return artifact.get("download_url").getAsString();
         }
       }
