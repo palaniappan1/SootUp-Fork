@@ -84,7 +84,7 @@ while downloaded_count < NUM_JARS:
     version = artifact['latestVersion']
     download_url = construct_download_url(group, artifact_id, version)
     output_path = os.path.join(OUTPUT_DIR, f"{artifact_id}-{version}.jar")
-    artifact_name = f"{artifact_id}--{version}.jar"
+    artifact_name = f"{artifact_id}-{version}.jar"
     try:
         if not any(jar['name'] == artifact_name for jar in metadata['jars']):
             if download_file(download_url, output_path):
