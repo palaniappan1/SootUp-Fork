@@ -1,6 +1,5 @@
 package sootup.java.bytecode.inputlocation;
 
-import sootup.core.inputlocation.AnalysisInputLocation;
 import sootup.core.model.SootMethod;
 import sootup.java.core.interceptors.BytecodeBodyInterceptors;
 import sootup.java.core.views.JavaView;
@@ -8,16 +7,11 @@ import sootup.java.core.views.JavaView;
 import java.util.Collections;
 
 public abstract class BaseFixJarsTest {
-  String failedJarsPath = "../failed_jars";
 
 
-  public String getJarPath(String jarName) {
-    return failedJarsPath + "/" + jarName;
-  }
-
-  public JavaView supplyJavaView(String jarName) {
+  public JavaView supplyJavaView(String jarDownloadUrl) {
     DownloadJarAnalysisInputLocation inputLocation =
-            new DownloadJarAnalysisInputLocation(getJarPath(jarName), BytecodeBodyInterceptors.Default.getBodyInterceptors(), Collections.emptyList());
+            new DownloadJarAnalysisInputLocation(jarDownloadUrl, BytecodeBodyInterceptors.Default.getBodyInterceptors(), Collections.emptyList());
     return new JavaView(inputLocation);
   }
 
