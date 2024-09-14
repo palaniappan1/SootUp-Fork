@@ -4,6 +4,7 @@ import categories.TestCategories;
 
 import java.io.*;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
@@ -12,14 +13,14 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import sootup.core.inputlocation.AnalysisInputLocation;
 import sootup.java.core.JavaSootClass;
+import sootup.java.core.interceptors.BytecodeBodyInterceptors;
 import sootup.java.core.views.JavaView;
 
 @Tag(TestCategories.JAVA_8_CATEGORY)
 public class RandomJarTest {
 
-  private final String jarPath = System.getProperty("jarPath", "");
+  private final String jarDownloadPath = System.getProperty("jarPath", "");
   private static final String TEST_METRICS_FILE = "jar_test.csv";
   private static final String FAILURE_METRICS_FILE = "jar_failure.csv";
   private boolean isTestFailure = false;
@@ -29,16 +30,16 @@ public class RandomJarTest {
 
   @Test
   public void testJar() {
-    if (jarPath.isEmpty()) {
+    if (jarDownloadPath.isEmpty()) {
       return;
     }
-    System.out.println("Jar file parameter is: " + jarPath);
+    System.out.println("Jar file parameter is: " + jarDownloadPath);
     long timeTakenForClasses = 0;
     long numberOfMethods = 0;
     long timeTakenForMethods = 0;
     long numberOfClasses = 0;
     try {
-      AnalysisInputLocation inputLocation = new JavaClassPathAnalysisInputLocation(jarPath);
+      DownloadJarAnalysisInputLocation inputLocation = new DownloadJarAnalysisInputLocation(jarDownloadPath, BytecodeBodyInterceptors.Default.getBodyInterceptors(), Collections.emptyList());
       JavaView view = new JavaView(inputLocation);
       long start = System.currentTimeMillis();
       Collection<JavaSootClass> classes = getClasses(view);
@@ -51,11 +52,11 @@ public class RandomJarTest {
       exception = e.getMessage();
       isTestFailure = true;
     } finally {
-      String jarFileName = jarPath.substring(jarPath.lastIndexOf("/") + 1);
+      String jarFileName = jarDownloadPath.substring(jarDownloadPath.lastIndexOf("/") + 1);
       TestMetrics metrics =
               new TestMetrics(
                       jarFileName,
-                      getDownloadUrl(jarFileName),
+                      jarDownloadPath,
                       numberOfClasses,
                       numberOfMethods,
                       timeTakenForClasses,
@@ -146,25 +147,6 @@ public class RandomJarTest {
     } catch (Exception e) {
       throw new RuntimeException("Error while getting methods list", e);
     }
-  }
-
-  public String getDownloadUrl(String artifactId){
-    Gson gson = new Gson();
-
-    try (FileReader reader = new FileReader(metadataFilepath)) {
-      JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
-      JsonArray artifactsArray = jsonObject.getAsJsonArray("artifacts");
-
-      for (JsonElement element : artifactsArray) {
-        JsonObject artifact = element.getAsJsonObject();
-        if (artifactId.equals(artifact.get("name").getAsString())) {
-          return artifact.get("download_url").getAsString();
-        }
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    return null;
   }
 
   public static class TestMetrics {

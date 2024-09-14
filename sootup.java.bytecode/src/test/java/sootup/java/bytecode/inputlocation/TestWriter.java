@@ -1,7 +1,13 @@
 package sootup.java.bytecode.inputlocation;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TestWriter {
@@ -20,8 +26,9 @@ public class TestWriter {
     String TEST_TAG = "@Test\n";
 
     public String getMethodString(String jarDownloadUrl, String methodSignature) {
+        System.out.println("Jar download url: " + jarDownloadUrl + " is the one to be the methodName");
         String methodName =
-                "public void execute" + jarDownloadUrl.replace(".jar", "").replaceAll("[^a-zA-Z]", "") + "(){\n";
+                "public void execute" + jarDownloadUrl.substring(jarDownloadUrl.lastIndexOf("/") + 1).replaceAll("[^a-zA-Z]", "") + "(){\n";
         return TEST_TAG
                 + methodName
                 + "\tString jarDownloadUrl = \""
@@ -84,9 +91,9 @@ public class TestWriter {
                 for (int i = 0; i < values.length; i++) {
                     values[i] = values[i].replaceAll("^\"|\"$", "");
                 }
-
+                System.out.println("Values in the file: " + Arrays.toString(values) + "\n");
                 // Create a JarFailureRecord object from the line
-                JarFailureRecord record = new JarFailureRecord(values[0], values[2], values[3]);
+                JarFailureRecord record = new JarFailureRecord(values[2], values[3]);
                 records.add(record);
             }
         } catch (IOException e) {
@@ -96,12 +103,10 @@ public class TestWriter {
     }
 
     public static class JarFailureRecord {
-        private final String jarName;
         private final String failedMethodSignature;
         private final String download_url;
 
-        public JarFailureRecord(String jarName, String failedMethodSignature, String download_url) {
-            this.jarName = jarName;
+        public JarFailureRecord(String failedMethodSignature, String download_url) {
             this.failedMethodSignature = failedMethodSignature;
             this.download_url = download_url;
         }

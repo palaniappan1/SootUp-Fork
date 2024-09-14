@@ -2,19 +2,15 @@ import requests
 import random
 import os
 import json
+import datetime
 
 print('Job Starting')
 
 BASE_URL = "https://search.maven.org/solrsearch/select"
 DOWNLOAD_URL_TEMPLATE = "https://repo1.maven.org/maven2/{group}/{artifact}/{version}/{artifact}-{version}.jar"
 metadata_path = os.getenv('METADATA_PATH', 'metadata.json')
-OUTPUT_DIR = "downloaded_jars"
 NUM_JARS = 2
 MAX_SIZE_MB = 5 * 1024 * 1024  # 5MB in bytes
-
-# Ensure output directory exists
-if not os.path.exists(OUTPUT_DIR):
-    os.makedirs(OUTPUT_DIR)
 
 
 def construct_download_url(group, artifact, version):
@@ -22,16 +18,13 @@ def construct_download_url(group, artifact, version):
     return DOWNLOAD_URL_TEMPLATE.format(group=group_path, artifact=artifact, version=version)
 
 
-def download_file(url, output_path):
+def can_download_file(url):
     response = requests.get(url, stream=True)
     response.raise_for_status()
     total_size = int(response.headers.get('content-length', 0))
     if total_size > MAX_SIZE_MB:
         return False
-    with open(output_path, 'wb') as file:
-        for chunk in response.iter_content(chunk_size=1024):
-            if chunk:  # filter out keep-alive new chunks
-                file.write(chunk)
+    else:
         return True
 
 
@@ -83,20 +76,19 @@ while downloaded_count < NUM_JARS:
     artifact_id = artifact['a']
     version = artifact['latestVersion']
     download_url = construct_download_url(group, artifact_id, version)
-    output_path = os.path.join(OUTPUT_DIR, f"{artifact_id}-{version}.jar")
     artifact_name = f"{artifact_id}-{version}.jar"
     try:
         if not any(jar['name'] == artifact_name for jar in metadata['jars']):
-            if download_file(download_url, output_path):
+            if can_download_file(download_url):
                 metadata['jars'].append({
                     'name': artifact_name,
-                    'download_url': download_url
+                    'download_url': download_url,
+                    'date': datetime.date.today().isoformat()
                 })
                 save_metadata(metadata)
-                print(f"Downloaded: {output_path}")
                 downloaded_count += 1
             else:
-                print(f"Skipped (too large): {output_path}")
+                print(f"Skipped (too large)")
     except requests.RequestException as e:
         print(f"Failed to download {download_url}: {e}")
 print(f"Downloaded {downloaded_count} JAR files.")
