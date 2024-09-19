@@ -8,6 +8,8 @@ import java.util.Collections;
 
 public abstract class BaseFixJarsTest {
 
+  String failedMethodSignature = "";
+
 
   public JavaView supplyJavaView(String jarDownloadUrl) {
     DownloadJarAnalysisInputLocation inputLocation =
@@ -31,7 +33,15 @@ public abstract class BaseFixJarsTest {
       javaView.getClasses()
               .flatMap(clazz -> clazz.getMethods().stream())
               .filter(SootMethod::hasBody)
-              .forEach(SootMethod::getBody);
+              .forEach(javaSootMethod -> {
+                try{
+                  javaSootMethod.getBody();
+                  throw new RuntimeException();
+                }
+                catch (Exception exception){
+                  failedMethodSignature = javaSootMethod.getSignature().toString();
+                }
+              });
     } catch (Exception e) {
       e.printStackTrace();
     }

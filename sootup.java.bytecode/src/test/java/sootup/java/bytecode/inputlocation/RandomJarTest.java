@@ -22,6 +22,7 @@ public class RandomJarTest extends BaseFixJarsTest{
     try {
       JavaView javaView = supplyJavaView(jarDownloadPath);
       assertJar(javaView);
+      throw new RuntimeException();
     } catch (Exception e) {
       String exception = e.getMessage();
       String jarFileName = jarDownloadPath.substring(jarDownloadPath.lastIndexOf("/") + 1);
@@ -29,7 +30,8 @@ public class RandomJarTest extends BaseFixJarsTest{
               new TestMetrics(
                       jarFileName,
                       jarDownloadPath,
-                      exception);
+                      exception,
+                      failedMethodSignature);
       writeMetrics(metrics);
     }
   }
@@ -52,7 +54,7 @@ public class RandomJarTest extends BaseFixJarsTest{
 
         // As the parameters in the method signature have delimiter (,), writer thinks that as a two
         // different values, so wrapping in an escape sequence.
-      String failedMethodSignature = "";
+      String failedMethodSignature = testMetrics.getFailedMethodSignature();
       String escapedFailedMethodSignature = "\"" + failedMethodSignature + "\"";
       writer.println(
               testMetrics.getJar_name()
@@ -70,14 +72,17 @@ public class RandomJarTest extends BaseFixJarsTest{
     String jar_name;
     String exception;
     String download_url;
+    String failedMethodSignature;
 
     public TestMetrics(
             String jar_name,
             String download_url,
-            String exception) {
+            String exception,
+            String failedMethodSignature) {
       this.jar_name = jar_name;
       this.download_url = download_url;
       this.exception = exception;
+      this.failedMethodSignature = failedMethodSignature;
     }
 
     public String getDownload_url() {
@@ -90,6 +95,10 @@ public class RandomJarTest extends BaseFixJarsTest{
 
     String getException() {
       return exception;
+    }
+
+    public String getFailedMethodSignature() {
+      return failedMethodSignature;
     }
   }
 }
