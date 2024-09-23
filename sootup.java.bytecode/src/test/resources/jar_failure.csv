@@ -1,0 +1,3 @@
+jar_name,exception,failedMethodSignature,download_url
+vtmap-android-services-directions-refresh-1.0.1.jar,null,"<com.mapbox.api.directionsrefresh.v1.AutoValue_MapboxDirectionsRefresh$Builder: void <init>(com.mapbox.api.directionsrefresh.v1.MapboxDirectionsRefresh,com.mapbox.api.directionsrefresh.v1.AutoValue_MapboxDirectionsRefresh$1)>",https://repo1.maven.org/maven2/vn/viettelmaps/vtmsdk/vtmap-android-services-directions-refresh/1.0.1/vtmap-android-services-directions-refresh-1.0.1.jar
+ant-launcher-1.6.5.jar,null,"<org.apache.tools.ant.launch.LaunchException: void <init>(java.lang.String)>",https://repo1.maven.org/maven2/ant/ant-launcher/1.6.5/ant-launcher-1.6.5.jar
