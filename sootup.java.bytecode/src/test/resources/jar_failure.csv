@@ -1,0 +1,3 @@
+jar_name,exception,failedMethodSignature,download_url
+metaconfig-pprint_sjs1_2.12-0.13.0.jar,null,"<metaconfig.pprint.TPrint$$anon$1: fansi.Str render(metaconfig.pprint.TPrintColors)>",https://repo1.maven.org/maven2/org/scalameta/metaconfig-pprint_sjs1_2.12/0.13.0/metaconfig-pprint_sjs1_2.12-0.13.0.jar
+ftr-gwt-calendar-ui-3.3.jar,null,"<eu.future.earth.gwt.client.date.horizontal.BaseHorizontalDateRenderer: eu.future.earth.gwt.client.date.horizontal.HorizontalRemoveCallBackHandler createRemoveHandler(eu.future.earth.gwt.client.date.horizontal.HorizontalViewPanelNoDays,java.lang.Object)>",https://repo1.maven.org/maven2/eu/future-earth/gwt/ftr-gwt-calendar-ui/3.3/ftr-gwt-calendar-ui-3.3.jar

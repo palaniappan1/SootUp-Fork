@@ -14,6 +14,16 @@
         },
         {
             "name": "scalardb-analytics-spark-compat-3.4_2.12--3.12.0.jar"
+        },
+        {
+            "name": "metaconfig-pprint_sjs1_2.12-0.13.0.jar",
+            "download_url": "https://repo1.maven.org/maven2/org/scalameta/metaconfig-pprint_sjs1_2.12/0.13.0/metaconfig-pprint_sjs1_2.12-0.13.0.jar",
+            "date": "2024-10-07"
+        },
+        {
+            "name": "ftr-gwt-calendar-ui-3.3.jar",
+            "download_url": "https://repo1.maven.org/maven2/eu/future-earth/gwt/ftr-gwt-calendar-ui/3.3/ftr-gwt-calendar-ui-3.3.jar",
+            "date": "2024-10-07"
         }
     ]
 }
