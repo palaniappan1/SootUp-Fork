@@ -1,0 +1,3 @@
+jar_name,exception,failedMethodSignature,download_url
+JDoubleDispatch-0.4.jar,null,"<su.izotov.java.ddispatch.ByParameterClass: void <init>(su.izotov.java.ddispatch.types.MasterClass,su.izotov.java.ddispatch.types.GuestClass,java.lang.String,su.izotov.java.ddispatch.types.ReturnClass,su.izotov.java.ddispatch.MethodsSource)>",https://repo1.maven.org/maven2/su/izotov/JDoubleDispatch/0.4/JDoubleDispatch-0.4.jar
+gravitee-gateway-services-heartbeat-3.13.1.jar,null,"<io.gravitee.gateway.services.heartbeat.event.InstanceEventPayload: void setTags(java.util.List)>",https://repo1.maven.org/maven2/io/gravitee/gateway/services/gravitee-gateway-services-heartbeat/3.13.1/gravitee-gateway-services-heartbeat-3.13.1.jar
