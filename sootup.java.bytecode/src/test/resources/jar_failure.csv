@@ -1,0 +1,3 @@
+jar_name,exception,failedMethodSignature,download_url
+broker-4.0.jar,null,"<frds.broker.marshall.json.StandardJSONRequestor: void close()>",https://repo1.maven.org/maven2/com/baerbak/maven/broker/4.0/broker-4.0.jar
+zio-aws-grafana_2.13-4.17.280.4.jar,null,"<io.github.vigoo.zioaws.grafana.model.AccountAccessType$: void <init>()>",https://repo1.maven.org/maven2/io/github/vigoo/zio-aws-grafana_2.13/4.17.280.4/zio-aws-grafana_2.13-4.17.280.4.jar
