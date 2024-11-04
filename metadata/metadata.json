@@ -14,6 +14,16 @@
         },
         {
             "name": "scalardb-analytics-spark-compat-3.4_2.12--3.12.0.jar"
+        },
+        {
+            "name": "statistics-9.0.70.jar",
+            "download_url": "https://repo1.maven.org/maven2/com/genesys/statistics/9.0.70/statistics-9.0.70.jar",
+            "date": "2024-11-04"
+        },
+        {
+            "name": "vue__devtools-api-6.6.4.jar",
+            "download_url": "https://repo1.maven.org/maven2/org/webjars/npm/vue__devtools-api/6.6.4/vue__devtools-api-6.6.4.jar",
+            "date": "2024-11-04"
         }
     ]
 }

@@ -1,0 +1,3 @@
+jar_name,exception,failedMethodSignature,download_url
+statistics-9.0.70.jar,null,"<com.genesys.internal.common.ProgressRequestBody: com.squareup.okhttp.MediaType contentType()>",https://repo1.maven.org/maven2/com/genesys/statistics/9.0.70/statistics-9.0.70.jar
+vue__devtools-api-6.6.4.jar,null,"",https://repo1.maven.org/maven2/org/webjars/npm/vue__devtools-api/6.6.4/vue__devtools-api-6.6.4.jar
