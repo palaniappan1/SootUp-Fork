@@ -1,0 +1,3 @@
+jar_name,exception,failedMethodSignature,download_url
+nacos-1.0-RELEASEOT.jar,null,"<com.jl.JLNacosConfig$Center$Config: java.lang.String toString()>",https://repo1.maven.org/maven2/io/gitee/laoshirenggo/nacos/1.0-RELEASEOT/nacos-1.0-RELEASEOT.jar
+org.carewebframework.api.security.mock-6.1.0-RC4.jar,null,"<org.carewebframework.api.security.mock.MockSecurityDomain: java.lang.String getLogicalId()>",https://repo1.maven.org/maven2/org/carewebframework/org.carewebframework.api.security.mock/6.1.0-RC4/org.carewebframework.api.security.mock-6.1.0-RC4.jar
