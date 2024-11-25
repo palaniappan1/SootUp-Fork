@@ -14,6 +14,16 @@
         },
         {
             "name": "scalardb-analytics-spark-compat-3.4_2.12--3.12.0.jar"
+        },
+        {
+            "name": "ioc-unit-jta-jpa-4.0.3.jar",
+            "download_url": "https://repo1.maven.org/maven2/net/oneandone/ioc-unit/ioc-unit-jta-jpa/4.0.3/ioc-unit-jta-jpa-4.0.3.jar",
+            "date": "2024-11-25"
+        },
+        {
+            "name": "proton-hawtdispatch-0.12.2.jar",
+            "download_url": "https://repo1.maven.org/maven2/org/apache/qpid/proton-hawtdispatch/0.12.2/proton-hawtdispatch-0.12.2.jar",
+            "date": "2024-11-25"
         }
     ]
 }
