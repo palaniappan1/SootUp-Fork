@@ -14,6 +14,16 @@
         },
         {
             "name": "scalardb-analytics-spark-compat-3.4_2.12--3.12.0.jar"
+        },
+        {
+            "name": "solr-opentelemetry-9.7.0.jar",
+            "download_url": "https://repo1.maven.org/maven2/org/apache/solr/solr-opentelemetry/9.7.0/solr-opentelemetry-9.7.0.jar",
+            "date": "2024-12-16"
+        },
+        {
+            "name": "spring-boot-starter-artemis-0.1.2.jar",
+            "download_url": "https://repo1.maven.org/maven2/org/mydotey/artemis/spring-boot-starter-artemis/0.1.2/spring-boot-starter-artemis-0.1.2.jar",
+            "date": "2024-12-16"
         }
     ]
 }

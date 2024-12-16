@@ -1,0 +1,3 @@
+jar_name,exception,failedMethodSignature,download_url
+solr-opentelemetry-9.7.0.jar,null,"<org.apache.solr.opentelemetry.ClosableTracerShim: void close()>",https://repo1.maven.org/maven2/org/apache/solr/solr-opentelemetry/9.7.0/solr-opentelemetry-9.7.0.jar
+spring-boot-starter-artemis-0.1.2.jar,null,"<org.mydotey.artemis.spring.boot.ArtemisServerInitializerConfiguration: void start()>",https://repo1.maven.org/maven2/org/mydotey/artemis/spring-boot-starter-artemis/0.1.2/spring-boot-starter-artemis-0.1.2.jar
