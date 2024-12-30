@@ -14,6 +14,16 @@
         },
         {
             "name": "scalardb-analytics-spark-compat-3.4_2.12--3.12.0.jar"
+        },
+        {
+            "name": "boosted-yaml-spigot-1.5.jar",
+            "download_url": "https://repo1.maven.org/maven2/dev/dejvokep/boosted-yaml-spigot/1.5/boosted-yaml-spigot-1.5.jar",
+            "date": "2024-12-30"
+        },
+        {
+            "name": "monix-grpc-runtime_2.13-0.0.0+48-f17bfc3b.jar",
+            "download_url": "https://repo1.maven.org/maven2/me/vican/jorge/monix-grpc-runtime_2.13/0.0.0+48-f17bfc3b/monix-grpc-runtime_2.13-0.0.0+48-f17bfc3b.jar",
+            "date": "2024-12-30"
         }
     ]
 }

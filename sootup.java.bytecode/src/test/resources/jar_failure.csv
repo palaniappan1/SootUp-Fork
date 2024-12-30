@@ -1,0 +1,3 @@
+jar_name,exception,failedMethodSignature,download_url
+boosted-yaml-spigot-1.5.jar,null,"<dev.dejvokep.boostedyaml.spigot.SpigotSerializer$1: void <init>()>",https://repo1.maven.org/maven2/dev/dejvokep/boosted-yaml-spigot/1.5/boosted-yaml-spigot-1.5.jar
+monix-grpc-runtime_2.13-0.0.0+48-f17bfc3b.jar,null,"<monix.grpc.client.package$: io.grpc.ManagedChannel $anonfun$makeResource$1(io.grpc.ManagedChannelBuilder)>",https://repo1.maven.org/maven2/me/vican/jorge/monix-grpc-runtime_2.13/0.0.0+48-f17bfc3b/monix-grpc-runtime_2.13-0.0.0+48-f17bfc3b.jar
