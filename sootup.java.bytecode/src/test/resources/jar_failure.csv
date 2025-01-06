@@ -1,0 +1,3 @@
+jar_name,exception,failedMethodSignature,download_url
+element-templates-c8-0.7.3.jar,null,"<io.miragon.miranum.connect.elementtemplate.c8.schema.Equals: int hashCode()>",https://repo1.maven.org/maven2/io/miragon/miranum/connect/element-templates-c8/0.7.3/element-templates-c8-0.7.3.jar
+vl-schema-1.2.0-MILESTONE-202201250934.jar,null,"<io.vacco.volach.schema.VlMatchPeak: io.vacco.volach.schema.VlMatchPeak from(io.vacco.volach.schema.VlFftPeak,io.vacco.volach.schema.VlFftPeak)>",https://repo1.maven.org/maven2/io/vacco/volach/vl-schema/1.2.0-MILESTONE-202201250934/vl-schema-1.2.0-MILESTONE-202201250934.jar

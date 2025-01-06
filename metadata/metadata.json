@@ -14,6 +14,16 @@
         },
         {
             "name": "scalardb-analytics-spark-compat-3.4_2.12--3.12.0.jar"
+        },
+        {
+            "name": "element-templates-c8-0.7.3.jar",
+            "download_url": "https://repo1.maven.org/maven2/io/miragon/miranum/connect/element-templates-c8/0.7.3/element-templates-c8-0.7.3.jar",
+            "date": "2025-01-06"
+        },
+        {
+            "name": "vl-schema-1.2.0-MILESTONE-202201250934.jar",
+            "download_url": "https://repo1.maven.org/maven2/io/vacco/volach/vl-schema/1.2.0-MILESTONE-202201250934/vl-schema-1.2.0-MILESTONE-202201250934.jar",
+            "date": "2025-01-06"
         }
     ]
 }
