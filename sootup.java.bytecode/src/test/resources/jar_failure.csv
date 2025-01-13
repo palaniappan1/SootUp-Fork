@@ -1,0 +1,3 @@
+jar_name,exception,failedMethodSignature,download_url
+scala-steward-mill-plugin_2.13-0.16.1.jar,null,"<org.scalasteward.mill.plugin.StewardPlugin$$anonfun$findModules$1: void <init>()>",https://repo1.maven.org/maven2/org/scala-steward/scala-steward-mill-plugin_2.13/0.16.1/scala-steward-mill-plugin_2.13-0.16.1.jar
+rsa-helper-0.0.7.jar,null,"<com.github.qq120011676.rsa.AesHelper: java.lang.String decryptByBase64(java.lang.String,java.lang.String,java.lang.String)>",https://repo1.maven.org/maven2/com/github/120011676/rsa-helper/0.0.7/rsa-helper-0.0.7.jar
