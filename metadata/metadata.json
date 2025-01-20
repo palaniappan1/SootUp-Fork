@@ -14,6 +14,16 @@
         },
         {
             "name": "scalardb-analytics-spark-compat-3.4_2.12--3.12.0.jar"
+        },
+        {
+            "name": "test-automation-jdbc-0.2.18.jar",
+            "download_url": "https://repo1.maven.org/maven2/com/nortal/test/test-automation-jdbc/0.2.18/test-automation-jdbc-0.2.18.jar",
+            "date": "2025-01-20"
+        },
+        {
+            "name": "tiny-logback-0.7.1.jar",
+            "download_url": "https://repo1.maven.org/maven2/net/morimekta/tiny/tiny-logback/0.7.1/tiny-logback-0.7.1.jar",
+            "date": "2025-01-20"
         }
     ]
 }

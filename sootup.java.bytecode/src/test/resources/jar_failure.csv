@@ -1,0 +1,3 @@
+jar_name,exception,failedMethodSignature,download_url
+test-automation-jdbc-0.2.18.jar,null,"<com.nortal.test.jdbc.configuration.JdbcDataSourceProperties: java.lang.String toString()>",https://repo1.maven.org/maven2/com/nortal/test/test-automation-jdbc/0.2.18/test-automation-jdbc-0.2.18.jar
+tiny-logback-0.7.1.jar,null,"<net.morimekta.tiny.logback.JsonLayout: void setStackTraceFilter(java.lang.String)>",https://repo1.maven.org/maven2/net/morimekta/tiny/tiny-logback/0.7.1/tiny-logback-0.7.1.jar
