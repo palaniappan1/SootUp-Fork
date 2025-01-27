@@ -14,6 +14,16 @@
         },
         {
             "name": "scalardb-analytics-spark-compat-3.4_2.12--3.12.0.jar"
+        },
+        {
+            "name": "rdf-validate-datatype-0.2.1.jar",
+            "download_url": "https://repo1.maven.org/maven2/org/webjars/npm/rdf-validate-datatype/0.2.1/rdf-validate-datatype-0.2.1.jar",
+            "date": "2025-01-27"
+        },
+        {
+            "name": "fife.common-6.0.3.jar",
+            "download_url": "https://repo1.maven.org/maven2/com/fifesoft/rtext/fife.common/6.0.3/fife.common-6.0.3.jar",
+            "date": "2025-01-27"
         }
     ]
 }

@@ -1,0 +1,3 @@
+jar_name,exception,failedMethodSignature,download_url
+rdf-validate-datatype-0.2.1.jar,null,"",https://repo1.maven.org/maven2/org/webjars/npm/rdf-validate-datatype/0.2.1/rdf-validate-datatype-0.2.1.jar
+fife.common-6.0.3.jar,null,"<org.fife.ctags.CTagReader: boolean findNext(org.fife.ctags.TagEntry)>",https://repo1.maven.org/maven2/com/fifesoft/rtext/fife.common/6.0.3/fife.common-6.0.3.jar
